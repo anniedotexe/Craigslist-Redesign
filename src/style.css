@@ -1,0 +1,22 @@
+@font-face {
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: 500;
+    src: url('fonts/SourceSansPro-Regular.ttf');
+}
+
+.root{
+    -fx-font-family: "Source Sans Pro";
+}
+
+.combo-box {
+    -fx-background-color: transparent;
+}
+
+.combo-box > .list-cell {
+    -fx-alignment: center;
+}
+
+.text-field {
+    -fx-background-color: transparent;
+}
