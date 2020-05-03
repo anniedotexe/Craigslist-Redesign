@@ -13,8 +13,12 @@
     -fx-background-color: transparent;
 }
 
+.combo-box .arrow, .combo-box .arrow-button{
+    -fx-background-color: transparent;
+}
+
 .combo-box > .list-cell {
-    -fx-alignment: center;
+    -fx-alignment: center-left;
 }
 
 .text-field {
