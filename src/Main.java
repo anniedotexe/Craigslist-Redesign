@@ -1,4 +1,6 @@
 import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -11,6 +13,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+
 public class Main extends Application {
 
     public static void main(String[] args) {
@@ -20,7 +23,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        Image theImage = new Image("file:images/full.jpg");
+        Image theImage = new Image("file:images/image4.jpg");
         ImageView viewTheImage = new ImageView(theImage);
         HBox theImageHBox = new HBox(viewTheImage);
         theImageHBox.setAlignment(Pos.CENTER);
@@ -47,11 +50,10 @@ public class Main extends Application {
 
         cityComboBox.getSelectionModel().select("Los Angeles");
         cityComboBox.setPrefWidth(240);
-        cityComboBox.setStyle("-fx-font-size: 16pt; -fx-fill: #243E90");
+        cityComboBox.setStyle("-fx-font-size: 16pt;");
 
         HBox cityComboHBox = new HBox(cityComboBox);
         cityComboHBox.setPadding(new Insets(45,0,0,380));
-
 
 
         TextField searchBar = new TextField();
@@ -70,6 +72,23 @@ public class Main extends Application {
         languageComboBox.getSelectionModel().selectFirst();
         languageComboBox.setPrefWidth(120);
         languageComboBox.setStyle("-fx-font-size: 16pt");
+
+//        // changing color of combobox text still does not work
+//        languageComboBox.setOnMouseEntered(new EventHandler<MouseEvent>() {
+//
+//            @Override
+//            public void handle(MouseEvent event) {
+//                languageComboBox.setStyle("-fx-fill: orange; -fx-font-size: 16pt");
+//            }
+//
+//        });
+//        languageComboBox.setOnMouseExited(new EventHandler<MouseEvent>() {
+//
+//            @Override
+//            public void handle(MouseEvent event) {
+//                languageComboBox.setStyle("-fx-font-size: 16pt");
+//            }
+//        });
 
         HBox langComboHBox = new HBox(languageComboBox);
         langComboHBox.setAlignment(Pos.TOP_RIGHT);
