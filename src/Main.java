@@ -23,7 +23,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        Image theImage = new Image("file:images/image4.jpg");
+        Image theImage = new Image("file:images/full.jpg");
         ImageView viewTheImage = new ImageView(theImage);
         HBox theImageHBox = new HBox(viewTheImage);
         theImageHBox.setAlignment(Pos.CENTER);
