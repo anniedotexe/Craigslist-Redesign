@@ -19,6 +19,17 @@
 
 .combo-box > .list-cell {
     -fx-alignment: center-left;
+    -fx-text-fill: #243E90;
+}
+
+.label {
+    -fx-padding: 14 0 14 15;
+    -fx-font-size: 18pt;
+    -fx-pref-width: 248;
+}
+
+.label:hover {
+    -fx-background-color: #C6C8E2;
 }
 
 .text-field {

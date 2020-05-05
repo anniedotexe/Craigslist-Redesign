@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -33,24 +34,33 @@ public class Main extends Application {
 
 
         ComboBox cityComboBox = new ComboBox();
-        cityComboBox.getItems().addAll("Acton", "Agoura Hills", "Alhambra", "Altadena", "Arcadia", "Artesia",
-                "Avalon", "Azusa", "Baldwin Park", "Bell Gardens", "Bellflower", "Beverly Hills", "Burbank",
-                "Calabasas", "Canoga Park", "Carson", "Cerritos", "Claremont", "Compton", "Covina",
-                "Culver City", "Diamond Bar", "Downey", "Duarte", "El Monte", "El Segundo", "Encino", "Gardena",
-                "Glendale", "Glendora", "Hacienda Heights", "Harbor City", "Hawthorne", "Hermosa Beach", "Inglewood",
-                "La Mirada", "La Puente", "La Verne", "Lake Hughes", "Lakewood", "Lancaster", "Littlerock", "Lomita",
-                "Long Beach", "Los Angeles", "Malibu", "Marina Del Rey", "Maywood", "Mission Hills", "Monrovia",
-                "Montebello", "Monterey Park", "Newhall", "North Hills", "North Hollywood", "Northridge", "Norwalk",
-                "Palmdale", "Panorama City", "Paramount", "Pasadena", "Pico Rivera", "Playa Del Rey", "Playa Vista",
-                "Pomona", "Porter Ranch", "Redondo Beach", "Reseda", "Rosemead", "San Dimas", "San Gabriel",
-                "San Marino", "San Pedro", "Santa Clarita", "Santa Monica", "Sherman Oaks",
-                "Sierra Madre", "South El Monte", "South Gate", "South Pasadena", "Studio City", "Sun Valley",
-                "Sunland", "Sylmar", "Temple City", "Topanga", "Torrance", "Valencia",
-                "Van Nuys", "Venice", "Walnut", "West Covina", "West Hollywood", "Whittier");
+        cityComboBox.getItems().addAll("Alhambra, CA", "Arcadia, CA", "Azusa, CA", "Baldwin Park, CA",
+                "Beverly Hills, CA", "Calabasas, CA", "Compton, CA", "Covina, CA", "Duarte, CA", "El Monte, CA",
+                "Glendale, CA", "Glendora, CA", "Harbor City, CA", "Inglewood, CA", "La Puente, CA", "La Verne, CA",
+                "Lakewood, CA", "Lancaster, CA", "Lomita, CA", "Los Angeles, CA", "Malibu, CA",
+                "Monrovia, CA", "Montebello, CA", "Northridge, CA", "Palmdale, CA", "Pasadena, CA", "Pico Rivera, CA",
+                "Pomona, CA", "Rosemead, CA", "San Dimas, CA", "San Gabriel, CA", "San Marino, CA", "San Pedro, CA",
+                "Santa Monica, CA", "Sherman Oaks, CA",  "Studio City, CA", "Sunland, CA",
+                "Temple City, CA", "Torrance, CA", "Valencia, CA", "Van Nuys, CA", "Venice, CA", "Walnut, CA",
+                "West Covina, CA", "Whittier, CA");
 
-        cityComboBox.getSelectionModel().select("Los Angeles");
+        cityComboBox.getSelectionModel().select("Los Angeles, CA");
         cityComboBox.setPrefWidth(240);
         cityComboBox.setStyle("-fx-font-size: 16pt;");
+
+        cityComboBox.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                cityComboBox.setStyle("-fx-background-color: #C6C8E2; -fx-font-size: 16pt");
+            }
+
+        });
+        cityComboBox.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                cityComboBox.setStyle("-fx-font-size: 16pt");
+            }
+        });
 
         HBox cityComboHBox = new HBox(cityComboBox);
         cityComboHBox.setPadding(new Insets(45,0,0,380));
@@ -64,7 +74,7 @@ public class Main extends Application {
 
 
         HBox searchBarHBox = new HBox(searchBar);
-        searchBarHBox.setPadding(new Insets(32, 0, 0, 25));
+        searchBarHBox.setPadding(new Insets(32, 0, 0, 20));
 
         ComboBox<String> languageComboBox = new ComboBox<>();
         // Top 10 languages used on the web 2020
@@ -73,31 +83,56 @@ public class Main extends Application {
         languageComboBox.setPrefWidth(120);
         languageComboBox.setStyle("-fx-font-size: 16pt");
 
-//        // changing color of combobox text still does not work
-//        languageComboBox.setOnMouseEntered(new EventHandler<MouseEvent>() {
-//
-//            @Override
-//            public void handle(MouseEvent event) {
-//                languageComboBox.setStyle("-fx-fill: orange; -fx-font-size: 16pt");
-//            }
-//
-//        });
-//        languageComboBox.setOnMouseExited(new EventHandler<MouseEvent>() {
-//
-//            @Override
-//            public void handle(MouseEvent event) {
-//                languageComboBox.setStyle("-fx-font-size: 16pt");
-//            }
-//        });
+        languageComboBox.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                languageComboBox.setStyle("-fx-background-color: #C6C8E2; -fx-font-size: 16pt");
+            }
+        });
+        languageComboBox.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                languageComboBox.setStyle("-fx-font-size: 16pt");
+            }
+        });
 
         HBox langComboHBox = new HBox(languageComboBox);
         langComboHBox.setAlignment(Pos.TOP_RIGHT);
-        langComboHBox.setPadding(new Insets(33,0,0,500));
-
+        langComboHBox.setPadding(new Insets(33,0,0,520));
 
         HBox topRowHBox = new HBox(cityComboHBox, searchBarHBox, langComboHBox);
 
-        StackPane stack = new StackPane(pictureVBox, topRowHBox);
+        // CATEGORIES HOVER
+        Label forSale = new Label("For Sale");
+        Label housing = new Label("Housing");
+        Label services = new Label("Services");
+        Label jobs = new Label("Jobs");
+        Label tempWork = new Label("Temporary Work");
+        Label resumes = new Label("Resumes");
+        Label community = new Label("Community");
+        Label discussions = new Label("Discussions");
+
+        forSale.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                forSale.setStyle("-fx-background-color: #C6C8E2");
+            }
+        });
+        forSale.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                forSale.setStyle("");
+            }
+        });
+
+        VBox categoryLabelsVBox = new VBox(forSale, housing, services, jobs, tempWork, resumes, community, discussions);
+        categoryLabelsVBox.setPadding(new Insets(45, 0, 0, 95));
+        categoryLabelsVBox.setStyle("-fx-font-size: 18pt;");
+
+
+        VBox fullVBox = new VBox(topRowHBox, categoryLabelsVBox);
+
+        StackPane stack = new StackPane(pictureVBox, fullVBox);
 
         Scene scene = new Scene(stack, 1800, 1000);
 
